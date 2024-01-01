@@ -9,7 +9,7 @@ while wait() do
     _G.GetTime = 0.3
     _G.Method = "Tp" -- Change to "Tp" if you want teleportation
 
-    for i, v in pairs(NoTES:GetDescendants()) do
+    for i, v in pairs(NoTES:GetChildren()) do
         if v:IsA("BasePart") then
 
             wait(_G.GetTime)
