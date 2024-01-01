@@ -26,8 +26,8 @@ for i, v in pairs(NoTES:GetDescendants()) do
 				print("it has esp")
 				wait(.1)
 			else
-				esp.FillTransparency = 1
 				esp:Clone().Parent = v.Name
+				esp.FillTransparency = 1
 				esp.OutlineColor = Color3.fromRGB(255, 255, 255)
 				wait(.1)
 			end
