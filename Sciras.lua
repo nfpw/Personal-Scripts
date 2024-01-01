@@ -22,10 +22,12 @@ if game.Loaded then
 		_G.GidilicekYer = v.CFrame
         if v.Name:FindFirstChild("esp") then
             print("it has esp")
+	    wait(.1)
         else
             esp.FillTransparency = 1
             esp:Clone().Parent = v.Name
             esp.OutlineColor = Color3.fromRGB(255, 255, 255)
+	    wait(.1)
         end
 		wait(_G.GetTime)
 	end
