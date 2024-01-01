@@ -4,9 +4,11 @@ while wait() do
 		local lpCh = lp.Character
 		local Human = lpCh.HumanoidRootPart
 		local humancf = Human.CFrame
-		local NoTES = game.Workspace.Leaderboards.Notes
+		local NoTES = game.Workspace.Notes
 	end
 end
+
+local esp = Instance.new("Highlight")
 
 if game.Loaded then
 	_G.Farm = true
@@ -18,6 +20,13 @@ end
 if game.Loaded then
 	for i, v in pairs(NoTES:GetDescendants()) do
 		_G.GidilicekYer = v.CFrame
+        if v.Name:FindFirstChild("esp") then
+            print("it has esp")
+        else
+            esp.FillTransparency = 1
+            esp:Clone().Parent = v.Name
+            esp.OutlineColor = Color3.fromRGB(255, 255, 255)
+        end
 		wait(_G.GetTime)
 	end
 end
