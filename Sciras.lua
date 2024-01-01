@@ -17,7 +17,7 @@ while wait() do
             if _G.Farm then
                 if _G.Method == "Tp" then
                     Human.CFrame = v.CFrame
-                    fireproximityprompt(v.ProximityPrompt)
+                    fireproximityprompt(v:FindFirstChild("ProximityPrompt"))
                     wait(_G.WaitTime)
                 else
                     v.CFrame = Human.CFrame
