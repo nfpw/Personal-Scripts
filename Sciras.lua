@@ -25,14 +25,14 @@ for i, v in pairs(NoTES:GetDescendants()) do
 		wait(.1)
 	end
 	wait(_G.GetTime)
-end
-
-while _G.Farm == true do
-	if _G.Method == "Tp" then
-		humancf = _G.GidilicekYer
-		wait(_G.WaitTime)
-	else
-		_G.GidilicekYer = humancf
-		wait(_G.WaitTime)
+	if _G.Farm == true do
+			if _G.Method == "Tp" then
+				humancf = _G.GidilicekYer
+				wait(_G.WaitTime)
+			else
+				v.CFrame = humancf
+				wait(_G.WaitTime)
+			end
+		end
 	end
 end
