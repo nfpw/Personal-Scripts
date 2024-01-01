@@ -7,7 +7,7 @@ while wait() do
     _G.Farm = true
     _G.WaitTime = 0.3
     _G.GetTime = 0.3
-    _G.Method = "Bring" -- Change to "Tp" if you want teleportation
+    _G.Method = "Tp" -- Change to "Tp" if you want teleportation
 
     for i, v in pairs(NoTES:GetDescendants()) do
         if v:IsA("BasePart") then
@@ -17,6 +17,7 @@ while wait() do
             if _G.Farm then
                 if _G.Method == "Tp" then
                     Human.CFrame = v.CFrame
+                    fireproximityprompt(v.ProximityPrompt)
                     wait(_G.WaitTime)
                 else
                     v.CFrame = Human.CFrame
