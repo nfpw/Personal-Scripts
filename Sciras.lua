@@ -5,7 +5,7 @@ while wait() do
     local NoTES = game.Workspace.Notes
 
     _G.Farm = true
-    _G.WaitTime = 0.3
+    _G.WaitTime = 1.3
     _G.GetTime = 0.3
     _G.Method = "Tp" -- Change to "Tp" if you want teleportation
 
