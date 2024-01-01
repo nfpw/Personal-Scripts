@@ -19,7 +19,7 @@ while wait() do
                     Human.CFrame = v.CFrame
                     wait(_G.WaitTime)
                 else
-                    Human.CFrame = v.CFrame
+                    v.CFrame = Human.CFrame
                     wait(_G.WaitTime)
                 end
             end
