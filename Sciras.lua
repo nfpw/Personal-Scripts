@@ -27,7 +27,7 @@ for i, v in pairs(NoTES:GetDescendants()) do
 				wait(.1)
 			else
 				esp:Clone().Parent = v.Name
-				esp.FillTransparency = 1
+				esp.FillTransparency = 0.5
 				esp.OutlineColor = Color3.fromRGB(255, 255, 255)
 				wait(.1)
 			end
