@@ -1,5 +1,3 @@
--- Forked by https://github.com/deividcomsono/LinoriaLib/blob/main/Library.lua
-
 local InputService: UserInputService = cloneref(game:GetService('UserInputService'));
 local TextService: TextService = cloneref(game:GetService('TextService'));
 local CoreGui: CoreGui = cloneref(game:GetService('CoreGui'));
@@ -19,7 +17,7 @@ local ScreenGui = Instance.new('ScreenGui');
 pcall(ProtectGui, ScreenGui);
 local UIScale = Instance.new('UIScale')
 UIScale.Parent = ScreenGui
-UIScale.Scale = 0.65
+UIScale.Scale = getgenv()._RatScale or 0.6
 
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global;
 local Parented = pcall(function() ScreenGui.Parent = GetHUI(); end);
