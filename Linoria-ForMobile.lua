@@ -17,7 +17,7 @@ local ScreenGui = Instance.new('ScreenGui');
 pcall(ProtectGui, ScreenGui);
 local UIScale = Instance.new('UIScale')
 UIScale.Parent = ScreenGui
-UIScale.Scale = getgenv()._RatScale or 0.6
+UIScale.Scale = getgenv()._RatScale or 0.9
 
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global;
 local Parented = pcall(function() ScreenGui.Parent = GetHUI(); end);
