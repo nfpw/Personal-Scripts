@@ -153,26 +153,11 @@ function randomString()
 end
 
 PARENT = nil
-if get_hidden_gui or gethui then
-	local hiddenUI = get_hidden_gui or gethui
-	local Main = Instance.new("ScreenGui")
-	Main.Name = randomString()
-	Main.Parent = hiddenUI()
-	PARENT = Main
-elseif (not is_sirhurt_closure) and (syn and syn.protect_gui) then
-	local Main = Instance.new("ScreenGui")
-	Main.Name = randomString()
-	syn.protect_gui(Main)
-	Main.Parent = COREGUI
-	PARENT = Main
-elseif COREGUI:FindFirstChild('RobloxGui') then
-	PARENT = COREGUI.RobloxGui
-else
-	local Main = Instance.new("ScreenGui")
-	Main.Name = randomString()
-	Main.Parent = COREGUI
-	PARENT = Main
-end
+
+local Main = Instance.new("ScreenGui")
+Main.Name = randomString()
+Main.Parent = COREGUI
+PARENT = Main
 
 shade1 = {}
 shade2 = {}
@@ -4198,19 +4183,6 @@ task.spawn(function()
 			minimizeHolder()
 		end
 		local chatboxFocusLostC = chatbox.FocusLost:Connect(chatboxFocusLost)
-
-		PlayerGui:WaitForChild("Chat").Frame.ChatBarParentFrame.ChildAdded:Connect(function(newbar)
-			wait()
-			if newbar:FindFirstChild('BoxFrame') then
-				chatbox = PlayerGui:WaitForChild("Chat").Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar
-				if chatboxFocusedC then chatboxFocusedC:Disconnect() end
-				chatboxFocusedC = chatbox.Focused:Connect(chatboxFocused)
-				if chatboxFunc then chatboxFunc:Disconnect() end
-				chatboxFunc = chatbox:GetPropertyChangedSignal("Text"):Connect(Index)
-				if chatboxFocusLostC then chatboxFocusLostC:Disconnect() end
-				chatboxFocusLostC = chatbox.FocusLost:Connect(chatboxFocusLost)
-			end
-		end)
 		--else
 		--print('Custom chat detected. Will not provide suggestions for commands typed in the chat.')
 	end
