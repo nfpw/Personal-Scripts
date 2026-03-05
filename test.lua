@@ -1,3 +1,4 @@
-function()
-  print("oha")
-end
+{
+  "action": "print",
+  "message": "oha"
+}
