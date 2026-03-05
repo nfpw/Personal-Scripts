@@ -1,19 +1,3 @@
-local cc = {"berke081", "LoftyEvil"}
-
-local function ea(name)
-    for _, v in ipairs(cc) do
-        if v == name then
-            return true
-        end
-    end
-    return false
-end
-
-if ea(game:GetService("Players").LocalPlayer.Name) then
-else
-  return
-end
-
 if IY_LOADED and not _G.IY_DEBUG == true then
     -- error("Infinite Yield is already running!", 0)
     return
