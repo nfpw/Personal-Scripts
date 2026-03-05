@@ -1,3 +1,20 @@
+local cc = {"berke081", "LoftyEvil"}
+
+local function ea(name)
+    for _, v in ipairs(cc) do
+        if v == name then
+            return true
+        end
+    end
+    return false
+end
+
+if ea(game:GetService("Players").LocalPlayer.Name) then
+	print("eh")
+else
+  return
+end
+
 if IY_LOADED and not _G.IY_DEBUG == true then
     -- error("Infinite Yield is already running!", 0)
     return
@@ -4327,6 +4344,61 @@ IndexContents = function(str,bool,cmdbar,Ianim)
 		minimizeHolder()
 	end
 end
+
+task.spawn(function()
+	if not isLegacyChat then return end
+	local chatbox
+	local success, result = pcall(function() chatbox = PlayerGui:WaitForChild("Chat").Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar end)
+	if success then
+		local function chatboxFocused()
+			canvasPos = CMDsF.CanvasPosition
+		end
+		local chatboxFocusedC = chatbox.Focused:Connect(chatboxFocused)
+
+		local function Index()
+			if chatbox.Text:lower():sub(1,1) == prefix then
+				if SettingsOpen == true then
+					wait(0.2)
+					CMDsF.Visible = true
+					Settings:TweenPosition(UDim2.new(0, 0, 0, 220), "InOut", "Quart", 0.2, true, nil)
+				end
+				IndexContents(PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text:lower():sub(2),true)
+			else
+				minimizeHolder()
+				if SettingsOpen == true then
+					wait(0.2)
+					Settings:TweenPosition(UDim2.new(0, 0, 0, 45), "InOut", "Quart", 0.2, true, nil)
+					CMDsF.Visible = false
+				end
+			end
+		end
+		local chatboxFunc = chatbox:GetPropertyChangedSignal("Text"):Connect(Index)
+
+		local function chatboxFocusLost(enterpressed)
+			if not enterpressed or chatbox.Text:lower():sub(1,1) ~= prefix then
+				IndexContents('',true)
+			end
+			CMDsF.CanvasPosition = canvasPos
+			minimizeHolder()
+		end
+		local chatboxFocusLostC = chatbox.FocusLost:Connect(chatboxFocusLost)
+
+		PlayerGui:WaitForChild("Chat").Frame.ChatBarParentFrame.ChildAdded:Connect(function(newbar)
+			wait()
+			if newbar:FindFirstChild('BoxFrame') then
+				chatbox = PlayerGui:WaitForChild("Chat").Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar
+				if chatboxFocusedC then chatboxFocusedC:Disconnect() end
+				chatboxFocusedC = chatbox.Focused:Connect(chatboxFocused)
+				if chatboxFunc then chatboxFunc:Disconnect() end
+				chatboxFunc = chatbox:GetPropertyChangedSignal("Text"):Connect(Index)
+				if chatboxFocusLostC then chatboxFocusLostC:Disconnect() end
+				chatboxFocusLostC = chatbox.FocusLost:Connect(chatboxFocusLost)
+			end
+		end)
+		--else
+		--print('Custom chat detected. Will not provide suggestions for commands typed in the chat.')
+	end
+end)
 
 function autoComplete(str,curText)
 	local endingChar = {"[", "/", "(", " "}
