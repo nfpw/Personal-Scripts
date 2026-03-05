@@ -4183,6 +4183,19 @@ task.spawn(function()
 			minimizeHolder()
 		end
 		local chatboxFocusLostC = chatbox.FocusLost:Connect(chatboxFocusLost)
+
+		PlayerGui:FindFirstChild("Chat").Frame.ChatBarParentFrame.ChildAdded:Connect(function(newbar)
+			wait()
+			if newbar:FindFirstChild('BoxFrame') then
+				chatbox = PlayerGui:FindFirstChild("Chat").Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar
+				if chatboxFocusedC then chatboxFocusedC:Disconnect() end
+				chatboxFocusedC = chatbox.Focused:Connect(chatboxFocused)
+				if chatboxFunc then chatboxFunc:Disconnect() end
+				chatboxFunc = chatbox:GetPropertyChangedSignal("Text"):Connect(Index)
+				if chatboxFocusLostC then chatboxFocusLostC:Disconnect() end
+				chatboxFocusLostC = chatbox.FocusLost:Connect(chatboxFocusLost)
+			end
+		end)
 		--else
 		--print('Custom chat detected. Will not provide suggestions for commands typed in the chat.')
 	end
