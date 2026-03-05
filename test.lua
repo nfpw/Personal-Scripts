@@ -1,4 +1,4 @@
 {
   "action": "print",
-  "message": "oha"
+  "message": "cathe göt"
 }
