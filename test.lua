@@ -1919,7 +1919,6 @@ SoundService = game:GetService("SoundService")
 Teams = game:GetService("Teams")
 StarterPlayer = game:GetService("StarterPlayer")
 InsertService = game:GetService("InsertService")
-ChatService = game:GetService("Chat")
 ProximityPromptService = game:GetService("ProximityPromptService")
 StatsService = game:GetService("Stats")
 MaterialService = game:GetService("MaterialService")
@@ -10254,14 +10253,6 @@ addcmd('spamspeed',{},function(args, speaker)
 	if isNumber(speed) then
 		spamspeed = speed
 	end
-end)
-
-addcmd('bubblechat',{},function(args, speaker)
-	ChatService.BubbleChatEnabled = true
-end)
-
-addcmd('unbubblechat',{'nobubblechat'},function(args, speaker)
-	ChatService.BubbleChatEnabled = false
 end)
 
 addcmd('safechat',{},function(args, speaker)
