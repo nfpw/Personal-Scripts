@@ -1,4 +1,1 @@
-{
-  "action": "print",
-  "message": "cathe göt"
-}
+print("yyy")
